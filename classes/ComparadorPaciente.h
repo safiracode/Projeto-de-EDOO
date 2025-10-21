@@ -1,5 +1,5 @@
 #pragma once
-#include "Paciente.h" // Nosso stub
+#include "Paciente.h"
 
 /*
  * Este struct "ensina" a fila de prioridade como comparar dois Paciente*
@@ -12,7 +12,7 @@
  */
 struct ComparadorPaciente {
     bool operator()(const Paciente* a, const Paciente* b) const {
-        // Compara usando o método que o Edu vai implementar
+        // Compara usando o método que Eduardo vai fzr
         return a->getPrioridade() < b->getPrioridade();
     }
 };

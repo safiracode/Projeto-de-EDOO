@@ -1,22 +1,21 @@
 #pragma once
 
-#include <queue>  // Para std::priority_queue
-#include <deque>  // <<< A Solução! O contêiner substituto do std::vector
+#include <queue>
+#include <vector>
 #include "Paciente.h"
-#include "ComparadorPaciente.h"
+#include "ComparadorPaciente.h" 
 
 class FilaAtendimento {
 private:
     /*
-     * Estamos definindo nossa fila
-     * de prioridade com 3 argumentos de template:
+     * Esta é a declaração da fila.
      * 1. Tipo de dado: Paciente*
-     * 2. Contêiner interno: std::deque<Paciente*> (NÃO o std::vector padrão) pois assim evitamos o uso de vector
+     * 2. Contêiner interno: std::vector<Paciente*>
      * 3. Classe de Comparação: ComparadorPaciente
      */
     std::priority_queue<
         Paciente*,
-        std::deque<Paciente*>, // << IMPORTANTE: Substitui o std::vector
+        std::vector<Paciente*>,
         ComparadorPaciente
     > fila;
 
@@ -42,7 +41,6 @@ public:
         return fila.empty();
     }
 
-    // (Opcional: Letícia pode usar esta função para ver o tamanho)
     int tamanho() const {
         return fila.size();
     }
