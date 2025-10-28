@@ -20,6 +20,6 @@ class Pessoa {
         void setIdade(int idade);
 
         //Funções getter para retornar um valor atribuido ao nome ou idade de um objeto
-        virtual std::string getnome() const;
+        virtual std::string getNome() const;
         int getIdade() const;
 };

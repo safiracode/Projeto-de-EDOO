@@ -6,17 +6,17 @@ Medico::Medico(std::string nome, int idade, std::string crm, std::string especia
       especialidade(especialidade) 
 {
     
-    setCrm(crm); 
+    setCRM(crm); 
 }
-
-void Medico::setCrm(std::string crm) {
+// FALTA SET ESPECIALIDADE -------------------
+void Medico::setCRM(std::string crm) {
     if (crm.empty()) {
         throw std::invalid_argument("CRM nao pode ser vazio.");
     }
     this->crm = crm;
 }
 
-std::string Medico::getCrm() const {
+std::string Medico::getCRM() const {
     return this->crm;
 }
 
