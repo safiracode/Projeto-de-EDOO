@@ -1,19 +1,21 @@
 #pragma once
+#include "Pessoa.h"
 #include <string>
 
-/*
- * Stub da classe Medico.
- * Eduardo deve implementar o resto depois
- */
-class Medico {
+class Medico: public Pessoa {
 private:
-    std::string nome;
+
+    std::string crm;
+    std::string especialidade;
 
 public:
 
-    Medico(std::string n) : nome(n) {}
+    Medico(std::string nome, int idade, std::string crm, std::string especialidade);
 
-    std::string getNome() const {
-        return this->nome;
-    }
+    void setCRM(std::string crm);
+    void setEspecialidade (std::string especialidade);
+
+    std::string getCRM() const;
+    std::string getEspecialidade() const;
+
 };
