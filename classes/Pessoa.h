@@ -3,12 +3,10 @@
 
 class Pessoa {
     private:
-
         std::string nome;
         int idade;
 
     public:
-
         //Função construtora
         Pessoa(std::string nome, int idade);
 

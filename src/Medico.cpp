@@ -8,7 +8,14 @@ Medico::Medico(std::string nome, int idade, std::string crm, std::string especia
     
     setCRM(crm); 
 }
-// FALTA SET ESPECIALIDADE -------------------
+
+void Medico::setEspecialidade(std::string especialidade) {
+    if (especialidade.empty()) {
+        throw std::invalid_argument("Especialidade nao pode ser vazia.");
+    }
+    this->especialidade = especialidade;
+}
+
 void Medico::setCRM(std::string crm) {
     if (crm.empty()) {
         throw std::invalid_argument("CRM nao pode ser vazio.");
