@@ -22,7 +22,7 @@ namespace Relatorios {
 
         map<string,int> cont;
         for (auto c : consultas)
-            if (c->medico) cont[c->medico->getNome()]++;
+            if (c->getMedico()) cont[c->getMedico()->getNome()]++;
 
         vector<pair<string,int>> dados(cont.begin(), cont.end());
         sort(dados.begin(), dados.end(), [](auto&a,auto&b){return a.second>b.second;});
@@ -39,8 +39,8 @@ namespace Relatorios {
 
         vector<int> tempos;
         for (auto c : consultas)
-            if (c->paciente)
-                tempos.push_back(c->paciente->getPrioridade()==1 ? 2 : 10);
+            if (c->getPaciente())
+                tempos.push_back(c->getPaciente()->getPrioridade()==1 ? 2 : 10);
 
         if (tempos.empty()) return (void)(cout << "Nenhum dado de tempo disponivel.\n");
         double media = accumulate(tempos.begin(), tempos.end(), 0.0) / tempos.size();
