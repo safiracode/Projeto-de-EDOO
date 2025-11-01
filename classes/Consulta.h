@@ -32,4 +32,5 @@ public:
     bool operator<(const Consulta& outra) const {
         return this->data < outra.data;
     }
+
 };

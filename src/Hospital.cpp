@@ -1,6 +1,7 @@
 #include "Hospital.h"
 #include <iostream>
 #include <stdexcept>
+#include "Relatorios.h"
 
 // Destrutor: libera memória alocada dinamicamente
 Hospital::~Hospital() {

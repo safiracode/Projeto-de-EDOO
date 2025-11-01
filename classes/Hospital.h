@@ -32,4 +32,6 @@ public:
     // BUSCAS
     Paciente* buscarPacientePorNome(const std::string& nome);
     Medico* buscarMedicoPorNome(const std::string& nome);
+
 };
+
