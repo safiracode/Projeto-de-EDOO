@@ -28,6 +28,9 @@ public:
         this->status = "Cancelada";
     }
 
+    Medico* getMedico() const { return medico; }
+    Paciente* getPaciente() const { return paciente; }
+
     // O comparador de PRIORIDADE (emergência) está no ComparadorPaciente.
     // Se precisar ordenar uma lista de Consultas (talvez por data),
     // o operador seria assim:

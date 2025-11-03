@@ -48,3 +48,4 @@ public:
     int getTotalMedicos() const;
     int getTotalConsultas() const;
 };
+
