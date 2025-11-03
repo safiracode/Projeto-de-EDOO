@@ -56,14 +56,15 @@ namespace Relatorios {
         int total = 0;
 
         for (auto c : consultas) {
-            Paciente* p = c->paciente; Medico* m = c->medico;
+            Paciente* p = c->getPaciente();
+            Medico* m = c->getMedico();
             if (!p || !m) continue;
 
             if ((porMedico && m->getNome()==nome) ||
                 (!porMedico && p->getNome()==nome)) {
                 cout << "- " << (porMedico?"Paciente: ":"Medico: ")
                      << setw(20) << left << (porMedico? p->getNome() : m->getNome())
-                     << " | Status: Concluida | Data: (?)\n";
+                     << " | Status: " << c->getStatus() << " | Data: " << c->getData() << "\n";
                 total++;
             }
         }
@@ -84,8 +85,18 @@ namespace Relatorios {
         cout << "\n=== Testes Unitarios dos Relatorios ===\n";
         gerarRelatorioMedicos(consultas);
         gerarRelatorioTempoMedio(consultas);
-        gerarHistoricoPorPaciente(consultas, "Joao");
-        gerarHistoricoPorMedico(consultas, "Dra. Ana");
+        
+        // Testa histórico com pacientes e médicos do sistema
+        if (!consultas.empty()) {
+            // Pega o primeiro paciente e médico das consultas existentes
+            for (auto c : consultas) {
+                if (c->getPaciente() && c->getMedico()) {
+                    gerarHistoricoPorPaciente(consultas, c->getPaciente()->getNome());
+                    gerarHistoricoPorMedico(consultas, c->getMedico()->getNome());
+                    break; // Testa apenas com um exemplo de cada
+                }
+            }
+        }
         cout << "=== Fim dos testes ===\n";
     }
 }

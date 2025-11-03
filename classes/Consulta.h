@@ -28,8 +28,12 @@ public:
         this->status = "Cancelada";
     }
 
-    Medico* getMedico() const { return medico; }
+    // Getters públicos
+    int getId() const { return id; }
     Paciente* getPaciente() const { return paciente; }
+    Medico* getMedico() const { return medico; }
+    std::string getData() const { return data; }
+    std::string getStatus() const { return status; }
 
     // O comparador de PRIORIDADE (emergência) está no ComparadorPaciente.
     // Se precisar ordenar uma lista de Consultas (talvez por data),
@@ -37,13 +41,6 @@ public:
     bool operator<(const Consulta& outra) const {
         return this->data < outra.data;
     }
-
-    // Getters para serialização
-    int getId() const { return id; }
-    Paciente* getPaciente() const { return paciente; }
-    Medico* getMedico() const { return medico; }
-    std::string getData() const { return data; }
-    std::string getStatus() const { return status; }
 
     // Serialização JSON (implementado em Consulta.cpp)
     std::string toJSONString() const;

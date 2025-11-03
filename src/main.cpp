@@ -2,6 +2,7 @@
 #include <string>
 #include <limits>
 #include "../classes/Hospital.h"
+#include "../classes/Relatorios.h"
 
 using namespace std;
 
@@ -54,6 +55,12 @@ void exibirMenu() {
     cout << "  8 - Listar Consultas\n";
     cout << "  9 - Visualizar Fila de Atendimento\n";
     cout << "  10 - Salvar Dados\n";
+    cout << "  ───── RELATÓRIOS ─────\n";
+    cout << "  11 - Pacientes Atendidos por Médico\n";
+    cout << "  12 - Tempo Médio de Espera\n";
+    cout << "  13 - Histórico por Paciente\n";
+    cout << "  14 - Histórico por Médico\n";
+    cout << "  15 - Executar Testes dos Relatórios\n";
     cout << "  0 - Sair\n";
     cout << "────────────────────────────────────────\n";
 }
@@ -208,6 +215,25 @@ int main() {
                     cout << "\n💾 Salvando dados...\n";
                     hospital.salvarDados();
                     cout << "✅ Dados salvos com sucesso!\n";
+                    break;
+                case 11:
+                    Relatorios::gerarRelatorioMedicos(hospital.getConsultas());
+                    break;
+                case 12:
+                    Relatorios::gerarRelatorioTempoMedio(hospital.getConsultas());
+                    break;
+                case 13: {
+                    string nomePac = lerString("Digite o nome do paciente: ");
+                    Relatorios::gerarHistoricoPorPaciente(hospital.getConsultas(), nomePac);
+                    break;
+                }
+                case 14: {
+                    string nomeMed = lerString("Digite o nome do médico: ");
+                    Relatorios::gerarHistoricoPorMedico(hospital.getConsultas(), nomeMed);
+                    break;
+                }
+                case 15:
+                    Relatorios::testarRelatorios(hospital.getConsultas());
                     break;
                 case 0:
                     cout << "\n💾 Salvando dados antes de sair...\n";
