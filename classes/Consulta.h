@@ -1,8 +1,10 @@
 #pragma once
+
 #include <string>
 
 class Paciente; 
 class Medico;
+class Hospital;
 
 class Consulta {
 private:
@@ -32,4 +34,15 @@ public:
     bool operator<(const Consulta& outra) const {
         return this->data < outra.data;
     }
+
+    // Getters para serialização
+    int getId() const { return id; }
+    Paciente* getPaciente() const { return paciente; }
+    Medico* getMedico() const { return medico; }
+    std::string getData() const { return data; }
+    std::string getStatus() const { return status; }
+
+    // Serialização JSON (implementado em Consulta.cpp)
+    std::string toJSONString() const;
+    static Consulta* fromJSONString(const std::string& jsonStr, Hospital* hospital);
 };

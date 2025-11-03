@@ -15,4 +15,8 @@ public:
 
     std::string getCRM() const;
     std::string getEspecialidade() const;
+
+    // Serialização JSON (implementado em Medico.cpp)
+    std::string toJSONString() const override;
+    static Medico* fromJSONString(const std::string& jsonStr);
 };

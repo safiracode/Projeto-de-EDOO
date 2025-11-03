@@ -20,4 +20,7 @@ class Pessoa {
         //Funções getter para retornar um valor atribuido ao nome ou idade de um objeto
         virtual std::string getNome() const;
         int getIdade() const;
+
+        // Serialização JSON (implementado em Pessoa.cpp)
+        virtual std::string toJSONString() const;
 };
