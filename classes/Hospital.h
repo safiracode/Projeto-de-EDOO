@@ -47,5 +47,6 @@ public:
     int getTotalPacientes() const;
     int getTotalMedicos() const;
     int getTotalConsultas() const;
+    const std::list<Consulta*>& getConsultas() const { return consultas; }
 };
 
