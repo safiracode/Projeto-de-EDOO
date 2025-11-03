@@ -4,6 +4,11 @@
 #include "../classes/Hospital.h"
 #include "../classes/Relatorios.h"
 
+// Configuração para suportar caracteres UTF-8 no console, em qualquer sistema operacional
+#ifdef _WIN32
+#include <windows.h> // Para SetConsoleOutputCP
+#endif
+
 using namespace std;
 
 // função para limpar o buffer de entrada
@@ -164,7 +169,18 @@ void atenderProximo(Hospital& hospital) {
     hospital.atenderProximo();
 }
 
+// Configurações para suportar UTF-8 no console
+void configurarUTF8() {
+#ifdef _WIN32
+    // habilita UTF-8 no console do Windows
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
+#endif
+}
+
 int main() {
+    configurarUTF8(); // Configura o console para UTF-8
+
     Hospital hospital;
     
     // Carregar dados salvos ao iniciar
