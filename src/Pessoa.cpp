@@ -1,5 +1,8 @@
 #include "Pessoa.h"
 #include <stdexcept>
+#include <nlohmann/json.hpp>
+
+using json = nlohmann::json;
 
 Pessoa::Pessoa(std::string nome, int idade) {
     setNome(nome);
@@ -26,4 +29,12 @@ std::string Pessoa::getNome() const {
 
 int Pessoa::getIdade() const {
     return this->idade;
+}
+
+std::string Pessoa::toJSONString() const {
+    json j = {
+        {"nome", nome},
+        {"idade", idade}
+    };
+    return j.dump();
 }

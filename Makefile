@@ -9,7 +9,7 @@ TARGET = $(BIN_DIR)/hospital
 
 #Compilador e flags
 CXX = g++
-CXXFLAGS = -std=c++17 -Wall -Wextra -I$(INC_DIR)
+CXXFLAGS = -std=c++17 -Wall -Wextra -I$(INC_DIR) -Iinclude
 
 #Localiza todos os arquivos .cpp dentro de src/
 SRC = $(wildcard $(SRC_DIR)/*.cpp)

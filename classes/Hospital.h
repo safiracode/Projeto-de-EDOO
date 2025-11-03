@@ -33,5 +33,19 @@ public:
     Paciente* buscarPacientePorNome(const std::string& nome);
     Medico* buscarMedicoPorNome(const std::string& nome);
 
+    // LISTAGENS
+    void listarPacientes() const;
+    void listarMedicos() const;
+    void listarConsultas() const;
+    void listarFilaAtendimento() const;
+
+    // PERSISTÊNCIA (JSON)
+    void salvarDados(const std::string& arquivo = "hospital_data.json");
+    void carregarDados(const std::string& arquivo = "hospital_data.json");
+
+    // MÉTODOS AUXILIARES
+    int getTotalPacientes() const;
+    int getTotalMedicos() const;
+    int getTotalConsultas() const;
 };
 

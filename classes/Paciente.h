@@ -15,4 +15,8 @@ public:
     
     int getPrioridade() const;
     std::string getHistorico() const;
+
+    // Serialização JSON (implementado em Paciente.cpp)
+    std::string toJSONString() const override;
+    static Paciente* fromJSONString(const std::string& jsonStr);
 };
