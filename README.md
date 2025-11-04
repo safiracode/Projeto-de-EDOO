@@ -7,9 +7,9 @@ Durante o desenvolvimento do sistema, o grupo buscou criar um código com uma ar
 
 ## Conceitos da disciplina aplicados 💡
 Durante o desenvolvimento do **Sistema Hospitalar**, colocamos em prática diversos conceitos fundamentais da disciplina, aplicando-os diretamente na arquitetura do projeto, como:
-- Os comandos condicionais (if, else if, else) foram essenciais para controlar o fluxo das operações e definir comportamentos distintos para cada tipo de usuário ou ação do sistema.
-- Os laços de repetição (for, while) foram amplamente usados para percorrer listas de pacientes, médicos e consultas, além de exibir informações e processar dados de forma dinâmica.
-- A modularização foi aplicada ao dividir o projeto em múltiplos arquivos (.h e .cpp), separando a declaração das classes de suas implementações, o que favoreceu a organização e manutenção do código.
+- Os comandos condicionais (`if`, `else if`, `else`) foram essenciais para controlar o fluxo das operações e definir comportamentos distintos para cada tipo de usuário ou ação do sistema.
+- Os laços de repetição (`for`, `while`) foram amplamente usados para percorrer listas de pacientes, médicos e consultas, além de exibir informações e processar dados de forma dinâmica.
+- A modularização foi aplicada ao dividir o projeto em múltiplos arquivos (`.h` e `.cpp`), separando a declaração das classes de suas implementações, o que favoreceu a organização e manutenção do código.
 
 Além disso, o sistema foi construído aplicando os principais conceitos da **Programação Orientada a Objetos (POO)**. Cada entidade principal do sistema (como `Pessoa`, `Paciente`, `Medico`, `Consulta` e `Hospital`) foi modelada como uma classe, com atributos e métodos que reproduzem comportamentos reais, aplicando encapsulamento, herança, polimorfismo e composição:
 - **Encapsulamento**: controle de acesso aos atributos das classes;
