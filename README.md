@@ -23,7 +23,7 @@ Além disso, o projeto utiliza a biblioteca **nlohmann/json** para realizar a **
     </td> 
     <td align="center"> 
       <a href="https://github.com/CaioVBoas"> 
-        <img src="https://avatars.githubusercontent.com/u/129686802?v=4" width="115"><br> 
+        <img src="https://avatars.githubusercontent.com/u/100202613?v=4" width="115"><br> 
         <sub><b>Caio Cesar Nascimento</b></sub><br> <sub>(<code>CaioVBoas</code>)</sub> 
       </a> 
     </td> 
