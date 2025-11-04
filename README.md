@@ -9,7 +9,7 @@ Durante o desenvolvimento do sistema, o grupo buscou criar um código com uma ar
 
 ---
 
-## Membros da Equipe 👥 
+## 👥 Membros da Equipe 
 <table> 
   <tr> 
     <td align="center"> 
@@ -45,7 +45,7 @@ Durante o desenvolvimento do sistema, o grupo buscou criar um código com uma ar
   </tr> 
 </table> 
 
-## Divisão de tarefas do projeto 👨‍💻
+## 👨‍💻 Divisão de tarefas do projeto
 
 | Time                                                  | Tarefas                                                                                |
 | ----------------------------------------------------- | -------------------------------------------------------------------------------------- |
@@ -57,7 +57,7 @@ Durante o desenvolvimento do sistema, o grupo buscou criar um código com uma ar
 
 ---
 
-## Conceitos da disciplina aplicados 💡
+## 💡 Conceitos da disciplina aplicados
 Durante o desenvolvimento do **Sistema Hospitalar**, colocamos em prática diversos conceitos fundamentais da disciplina, aplicando-os diretamente na arquitetura do projeto, como:
 - Os _comandos condicionais_ (`if`, `else if`, `else`) foram essenciais para controlar o fluxo das operações e definir comportamentos distintos para cada tipo de usuário ou ação do sistema.
 - Os _laços de repetição_ (`for`, `while`) foram amplamente usados para percorrer listas de pacientes, médicos e consultas, além de exibir informações e processar dados de forma dinâmica.
@@ -71,7 +71,7 @@ Além disso, o sistema foi construído aplicando os principais conceitos da **Pr
 
 Por fim, o projeto utiliza a biblioteca **nlohmann/json** para realizar a **persistência de dados em formato JSON**, permitindo salvar e recuperar informações do sistema sem necessidade de um banco de dados real.
 
-## Ferramentas, frameworks e bibliotecas utilizados 🛠️ 
+## 🛠️ Ferramentas, frameworks e bibliotecas utilizados 
 Para o desenvolvimento do _Sistema Hospitalar_, utilizamos um conjunto de ferramentas e tecnologias, que tornaram possível criar um projeto tecnicamente funcional. Esses recursos foram:
 - **C++** — Linguagem principal do projeto, utilizada para a implementação da lógica, organização das classes e integração de todas as partes do sistema.
 - **nlohmann/json** — Biblioteca usada para realizar a persistência de dados em formato JSON, permitindo salvar e recuperar informações sem um banco de dados real.
