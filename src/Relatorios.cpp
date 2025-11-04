@@ -40,7 +40,8 @@ namespace Relatorios {
         vector<int> tempos;
         for (auto c : consultas)
             if (c->getPaciente())
-                tempos.push_back(c->getPaciente()->getPrioridade()==1 ? 2 : 10);
+                tempos.push_back(c->getPrioridadeTriagem() == 1 ? 2 : 10);
+
 
         if (tempos.empty()) return (void)(cout << "Nenhum dado de tempo disponivel.\n");
         double media = accumulate(tempos.begin(), tempos.end(), 0.0) / tempos.size();
