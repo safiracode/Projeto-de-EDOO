@@ -6,9 +6,9 @@
 
 // Configuração para suportar caracteres UTF-8 no console, em qualquer sistema operacional
 #ifdef _WIN32
-
-    #define NOMINMAX 
-
+    #ifndef NOMINMAX
+        #define NOMINMAX
+    #endif
     #include <windows.h> // Para SetConsoleOutputCP 
 #endif
 

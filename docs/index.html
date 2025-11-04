@@ -5,18 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sistema Hospitalar em C++</title>
   <link rel="stylesheet" href="style.css">
+  
   <style>
     body { font-family: Arial, sans-serif; margin: 0; background: #f8f9fa; color: #333; }
-    header { background: #0d6efd; color: white; padding: 3rem 1rem; text-align: center; }
+    header { background: #011e4b; color: white; padding: 3rem 1rem; text-align: center; }
     h1 { margin-bottom: .5rem; }
     main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
-    h2 { color: #0d6efd; border-left: 5px solid #0d6efd; padding-left: .5rem; }
+    h2 { color: #011e4b; border-left: 5px solid #011e4b; padding-left: .5rem; }
     section { margin-bottom: 2rem; }
     ul { line-height: 1.8; }
-    a { color: #0d6efd; text-decoration: none; }
+    a { color: #0950b9; text-decoration: none; }
     a:hover { text-decoration: underline; }
     img, iframe { max-width: 100%; border-radius: 8px; }
-    footer { text-align: center; padding: 2rem; background: #e9ecef; color: #555; }
+    figure {
+      text-align: center;
+      margin: 1.5rem 0;
+    }
+    figcaption {
+      font-size: 0.95rem;
+      color: #555;
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+    footer { text-align: center; padding: 2rem; background: #e9ecef; color: #555; max-height: 100px; }
+
+    /* Ajuste das fotos */
+    .gallery {
+    display: flex;
+    flex-wrap: wrap;         /* Permite quebrar linha */
+    justify-content: center; /* Centraliza as imagens */
+    gap: 1.5rem;             /* Espaço entre elas */
+  }
+
+  .gallery figure {
+    flex: 1 1 45%;           /* Cada imagem ocupa 45% da largura */
+    text-align: center;
+    margin: 0;
+  }
+
+  .gallery img {
+    border-radius: 8px;
+  }
   </style>
 </head>
 <body>
@@ -28,13 +57,13 @@
 
 <main>
   <section>
-    <h2>📘 Sobre o Projeto</h2>
+    <h2>Sobre o Projeto</h2>
     <p>Este projeto implementa um sistema hospitalar desenvolvido em C++ utilizando Programação Orientada a Objetos (POO). 
     Ele permite o cadastro de pacientes e médicos, agendamento de consultas, geração de relatórios sobre pacientes e/ou médicos e armazenamento dos dados em arquivos JSON, garantindo persistência entre execuções.</p>
   </section>
 
   <section>
-    <h2>⚙️ Principais Funcionalidades</h2>
+    <h2>Principais Funcionalidades</h2>
     <ul>
       <li>Cadastro e listagem de pacientes e médicos</li>
       <li>Agendamento e histórico de consultas</li>
@@ -45,25 +74,59 @@
   </section>
 
   <section>
-    <h2>🖼️ Demonstrações</h2>
-    <img src="imagens/menu.jpg" alt="Menu Principal do Sistema" />
-    <p>Confira uma demonstração em vídeo abaixo:</p>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/SEU_VIDEO_ID"
-            title="Demonstração do Projeto" frameborder="0" allowfullscreen></iframe>
+  <h2>Demonstrações</h2>
+
+  <div class="gallery">
+    <figure>
+      <img src="imagens/menu.png" alt="Menu Principal do Sistema" />
+      <figcaption>Menu principal do sistema hospitalar</figcaption>
+    </figure>
+
+    <figure>
+      <img src="imagens/cadastro_paciente.png" alt="Tela de Cadastro de Paciente" />
+      <figcaption>Tela de cadastro de paciente</figcaption>
+    </figure>
+
+    <figure>
+      <img src="imagens/relatorio.png" alt="Tela de Relatórios" />
+      <figcaption>Relatório de consultas por médico</figcaption>
+    </figure>
+
+    <figure>
+      <img src="imagens/fila.png" alt="Fila de Atendimento" />
+      <figcaption>Fila de atendimento automatizada</figcaption>
+    </figure>
+  </div>
+
+  <p style="margin-top:2.5rem;">Demonstração do sistema em vídeo:</p>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/SEU_VIDEO_ID"
+          title="Demonstração do Projeto" frameborder="0" allowfullscreen></iframe>
+</section>
+
+  <section>
+    <h2>Links</h2>
+    <p>
+      🔹 <a href="https://github.com/safiracode/Projeto-de-EDOO" target="_blank">Repositório do Código (GitHub)</a><br>
+      🔹 <a href="/docs/Relatório EDOO.pdf" target="_blank">Relatório do Projeto (PDF)</a><br>
+      🔹 <a href="https://www.youtube.com/watch?v=SEU_VIDEO_ID" target="_blank">Vídeo de Apresentação (YouTube)</a>
+    </p>
   </section>
 
   <section>
-    <h2>🔗 Links</h2>
+    <h2>Desenvolvedores</h2>
     <p>
-      🔹 <a href="https://github.com/safiracode/Projeto-de-EDOO" target="_blank">Repositório do Código</a><br>
-      🔹 <a href="/docs/Relatório EDOO.pdf" target="_blank">📄 Relatório do Projeto (PDF)</a><br>
-      🔹 <a href="https://www.youtube.com/watch?v=SEU_VIDEO_ID" target="_blank">🎥 Vídeo de Apresentação</a>
+      🔸 <a href="https://github.com/analauraboliveira" target="_blank">Ana Laura Barboza</a><br>
+      🔸 <a href="https://github.com/CaioVBoas" target="_blank">Caio César Nascimento</a><br>
+      🔸 <a href="https://github.com/Edo-Alve5" target="_blank">Eduardo Alves</a><br>
+      🔸 <a href="https://github.com/lestrb" target="_blank">Letícia Staudinger</a><br>
+      🔸 <a href="https://github.com/safiracode" target="_blank">Safira Moraes</a><br>
     </p>
   </section>
+
 </main>
 
 <footer>
-  <p>Desenvolvido por Ana Laura, Caio Cesar, Eduardo Alves, Letícia Staudinger e Safira Gomes — Projeto de Sistema de Informação Hospitalar (C++)</p>
+  <p>Desenvolvido para uso acadêmico e livre para fins educacionais.</p>
 </footer>
 
 </body>
