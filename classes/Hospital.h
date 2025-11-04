@@ -23,6 +23,16 @@ public:
     void cadastrarPaciente(std::string nome, int idade, int prioridadeVulnerabilidade, std::string historico = "");
    void cadastrarMedico(std::string nome, int idade, std::string crm, std::string especialidade);
 
+    // EDIÇÃO
+    void editarPaciente(const std::string& nomeAtual);
+    void editarMedico(const std::string& nomeAtual);
+    void editarConsulta(int consultaId);
+
+    // REMOÇÃO
+    bool removerPaciente(const std::string& nome);
+    bool removerMedico(const std::string& nome);
+    bool removerConsulta(int consultaId);
+
     // CONSULTAS / FILA
     void agendarEEnfileirar(std::string nomePaciente, std::string nomeMedico, std::string data, int prioridadeTriagem);
     void atenderProximo(std::string nomeMedico);
@@ -35,6 +45,10 @@ public:
     Medico* buscarMedicoPorNome(const std::string& nome);
     // Precisamos de uma forma de buscar consulta por ID
     Consulta* buscarConsultaPorId(int id);
+
+    // VALIDAÇÃO
+    bool pacientePossuiConsultas(const std::string& nomePaciente) const;
+    bool medicoPossuiConsultas(const std::string& nomeMedico) const;
 
     // LISTAGENS
     void listarPacientes() const;

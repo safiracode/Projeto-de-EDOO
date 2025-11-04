@@ -45,6 +45,8 @@ public:
     std::string getData() const { return data; }
     std::string getStatus() const { return status; }
     
+    void setData(const std::string& novaData) { this->data = novaData; }
+    
     void setPrioridadeTriagem(int p) {
         if (p < 1 || p > 3) {
             throw std::invalid_argument("Prioridade de triagem invalida. Use 1 (Emergência), 2 (Urgência) ou 3 (Estável).");
