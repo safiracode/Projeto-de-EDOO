@@ -114,6 +114,272 @@ void Hospital::cancelarConsulta(int consultaId) {
     // A lógica em 'atenderProximo' irá pular automaticamente esta consulta.
 }
 
+// EDIÇÃO
+// Edição do paciente com validação dos dados necessários
+void Hospital::editarPaciente(const std::string& nomeAtual) {
+    Paciente* p = buscarPacientePorNome(nomeAtual);
+    if (!p) {
+        std::cerr << "❌ Paciente não encontrado.\n";
+        return;
+    }
+
+    std::cout << "\n═══ EDITAR PACIENTE ═══\n";
+    std::cout << "--- Dados Atuais ---\n";
+    std::cout << "Nome: " << p->getNome() << "\n";
+    std::cout << "Idade: " << p->getIdade() << " anos\n";
+    std::cout << "Prioridade: " << (p->getPrioridadeVulnerabilidade() == 1 ? "Alto Risco" : "Baixo Risco") << "\n";
+    std::cout << "Histórico: " << p->getHistorico() << "\n\n";
+
+    std::cout << "Digite os novos dados (deixe vazio para manter o atual):\n";
+
+    std::string novoNome;
+    std::cout << "Novo nome: ";
+    std::getline(std::cin, novoNome);
+    if (!novoNome.empty()) {
+        p->setNome(novoNome);
+    }
+
+    std::string idadeStr;
+    std::cout << "Nova idade: ";
+    std::getline(std::cin, idadeStr);
+    if (!idadeStr.empty()) {
+        try {
+            int novaIdade = std::stoi(idadeStr);
+            if (novaIdade > 0 && novaIdade <= 150) {
+                p->setIdade(novaIdade);
+            }
+        } catch (...) {
+            std::cout << "⚠️  Idade inválida, mantendo valor atual.\n";
+        }
+    }
+
+    std::string prioridadeStr;
+    std::cout << "Nova prioridade (1-Alto Risco, 2-Baixo Risco): ";
+    std::getline(std::cin, prioridadeStr);
+    if (!prioridadeStr.empty()) {
+        try {
+            int novaPrioridade = std::stoi(prioridadeStr);
+            if (novaPrioridade == 1 || novaPrioridade == 2) {
+                p->setPrioridadeVulnerabilidade(novaPrioridade);
+            }
+        } catch (...) {
+            std::cout << "⚠️  Prioridade inválida, mantendo valor atual.\n";
+        }
+    }
+
+    std::string novoHistorico;
+    std::cout << "Novo histórico: ";
+    std::getline(std::cin, novoHistorico);
+    if (!novoHistorico.empty()) {
+        p->setHistorico(novoHistorico);
+    }
+
+    std::cout << "✅ Paciente atualizado com sucesso!\n";
+}
+
+// Edição do médico com validação dos dados necessários
+void Hospital::editarMedico(const std::string& nomeAtual) {
+    Medico* m = buscarMedicoPorNome(nomeAtual);
+    if (!m) {
+        std::cerr << "❌ Médico não encontrado.\n";
+        return;
+    }
+
+    std::cout << "\n═══ EDITAR MÉDICO ═══\n";
+    std::cout << "--- Dados Atuais ---\n";
+    std::cout << "Nome: " << m->getNome() << "\n";
+    std::cout << "Idade: " << m->getIdade() << " anos\n";
+    std::cout << "CRM: " << m->getCRM() << "\n";
+    std::cout << "Especialidade: " << m->getEspecialidade() << "\n\n";
+
+    std::cout << "Digite os novos dados (deixe vazio para manter o atual):\n";
+
+    std::string novoNome;
+    std::cout << "Novo nome: ";
+    std::getline(std::cin, novoNome);
+    if (!novoNome.empty()) {
+        m->setNome(novoNome);
+    }
+
+    std::string idadeStr;
+    std::cout << "Nova idade: ";
+    std::getline(std::cin, idadeStr);
+    if (!idadeStr.empty()) {
+        try {
+            int novaIdade = std::stoi(idadeStr);
+            if (novaIdade > 0 && novaIdade <= 150) {
+                m->setIdade(novaIdade);
+            }
+        } catch (...) {
+            std::cout << "⚠️  Idade inválida, mantendo valor atual.\n";
+        }
+    }
+
+    std::string novoCRM;
+    std::cout << "Novo CRM: ";
+    std::getline(std::cin, novoCRM);
+    if (!novoCRM.empty()) {
+        m->setCRM(novoCRM);
+    }
+
+    std::string novaEspecialidade;
+    std::cout << "Nova especialidade: ";
+    std::getline(std::cin, novaEspecialidade);
+    if (!novaEspecialidade.empty()) {
+        m->setEspecialidade(novaEspecialidade);
+    }
+
+    std::cout << "✅ Médico atualizado com sucesso!\n";
+}
+
+// Edição da consulta com validação dos dados necessários e reordenação da fila se necessário
+void Hospital::editarConsulta(int consultaId) {
+    Consulta* c = buscarConsultaPorId(consultaId);
+    if (!c) {
+        std::cerr << "❌ Consulta não encontrada.\n";
+        return;
+    }
+
+    if (c->getStatus() != "Agendada") {
+        std::cerr << "❌ Só é possível editar consultas com status 'Agendada'.\n";
+        std::cerr << "   Status atual: " << c->getStatus() << "\n";
+        return;
+    }
+
+    std::cout << "\n═══ EDITAR CONSULTA ═══\n";
+    std::cout << "--- Dados Atuais ---\n";
+    std::cout << "ID: " << c->getId() << "\n";
+    std::cout << "Paciente: " << c->getPaciente()->getNome() << "\n";
+    std::cout << "Médico: " << c->getMedico()->getNome() << "\n";
+    std::cout << "Data: " << c->getData() << "\n";
+    std::cout << "Prioridade Triagem: " << c->getPrioridadeTriagem() << "\n\n";
+
+    std::cout << "⚠️  Nota: Não é possível alterar paciente ou médico.\n";
+    std::cout << "         Para isso, cancele esta consulta e crie uma nova.\n\n";
+    std::cout << "Digite os novos dados (deixe vazio para manter o atual):\n";
+
+    std::string novaData;
+    std::cout << "Nova data (ex: 2025-11-15): ";
+    std::getline(std::cin, novaData);
+    if (!novaData.empty()) {
+        c->setData(novaData);
+    }
+
+    std::string prioridadeStr;
+    std::cout << "Nova prioridade (1-Emergência, 2-Urgência, 3-Estável): ";
+    std::getline(std::cin, prioridadeStr);
+    if (!prioridadeStr.empty()) {
+        try {
+            int novaPrioridade = std::stoi(prioridadeStr);
+            if (novaPrioridade >= 1 && novaPrioridade <= 3) {
+                c->setPrioridadeTriagem(novaPrioridade);
+                
+                // A fila será reorganizada automaticamente na próxima chamada
+                std::cout << "⚠️  Prioridade alterada. A fila será reorganizada.\n";
+                
+            } else {
+                std::cout << "⚠️  Prioridade inválida, mantendo valor atual.\n";
+            }
+        } catch (...) {
+            std::cout << "⚠️  Entrada inválida, mantendo valor atual.\n";
+        }
+    }
+
+    std::cout << "✅ Consulta atualizada com sucesso!\n";
+}
+
+// REMOÇÃO
+
+// Remoção do paciente com verificação de consultas ativas
+bool Hospital::removerPaciente(const std::string& nome) {
+
+    if (pacientePossuiConsultas(nome)) {
+        std::cerr << "❌ Não é possível remover. Paciente possui consultas ativas.\n";
+        std::cerr << "   Cancele ou conclua as consultas primeiro.\n";
+        return false;
+    }
+
+    for (auto it = pacientes.begin(); it != pacientes.end(); ++it) {
+        if ((*it)->getNome() == nome) {
+            delete *it;
+            pacientes.erase(it);
+            std::cout << "✅ Paciente '" << nome << "' removido com sucesso.\n";
+            return true;
+        }
+    }
+
+    std::cerr << "❌ Paciente não encontrado.\n";
+    return false;
+}
+
+// Remoção do médico com verificação de consultas ativas
+bool Hospital::removerMedico(const std::string& nome) {
+
+    if (medicoPossuiConsultas(nome)) {
+        std::cerr << "❌ Não é possível remover. Médico possui consultas ativas.\n";
+        std::cerr << "   Cancele ou conclua as consultas primeiro.\n";
+        return false;
+    }
+
+    for (auto it = medicos.begin(); it != medicos.end(); ++it) {
+        if ((*it)->getNome() == nome) {
+            delete *it;
+            medicos.erase(it);
+            std::cout << "✅ Médico '" << nome << "' removido com sucesso.\n";
+            return true;
+        }
+    }
+
+    std::cerr << "❌ Médico não encontrado.\n";
+    return false;
+}
+
+// Remoção da consulta por ID
+bool Hospital::removerConsulta(int consultaId) {
+    for (auto it = consultas.begin(); it != consultas.end(); ++it) {
+        if ((*it)->getId() == consultaId) {
+            std::string pacienteNome = (*it)->getPaciente()->getNome();
+            std::string medicoNome = (*it)->getMedico()->getNome();
+            
+            delete *it;
+            consultas.erase(it);
+            
+            std::cout << "✅ Consulta ID " << consultaId << " removida com sucesso.\n";
+            std::cout << "   (Paciente: " << pacienteNome << ", Médico: " << medicoNome << ")\n";
+            return true;
+        }
+    }
+
+    std::cerr << "❌ Consulta não encontrada.\n";
+    return false;
+}
+
+// VALIDAÇÃO
+
+// Verifica se o paciente possui consultas ativas (Agendada ou Concluída)
+bool Hospital::pacientePossuiConsultas(const std::string& nomePaciente) const {
+    for (auto c : consultas) {
+        if (c->getPaciente()->getNome() == nomePaciente) {
+            if (c->getStatus() == "Agendada" || c->getStatus() == "Concluída") {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+// Verifica se o médico possui consultas ativas (Agendada ou Concluída)
+bool Hospital::medicoPossuiConsultas(const std::string& nomeMedico) const {
+    for (auto c : consultas) {
+        if (c->getMedico()->getNome() == nomeMedico) {
+            if (c->getStatus() == "Agendada" || c->getStatus() == "Concluída") {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 // BUSCAS
 Paciente* Hospital::buscarPacientePorNome(const std::string& nome) {
     for (auto p : pacientes) {
