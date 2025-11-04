@@ -6,14 +6,16 @@ using json = nlohmann::json;
 
 Paciente::Paciente(std::string nome, int idade, int prioridade, std::string historico)
     : Pessoa(nome, idade),
-      historicoMedico(historico) 
+      historicoMedico(historico),
+      ordemChegada(0) // Inicializa com 0 por padrão
 {
     setPrioridade(prioridade); 
 }
 
 void Paciente::setPrioridade(int p) {
-    if (p < 0 || p > 1) { 
-        throw std::invalid_argument("Prioridade invalida. Use 0 (normal) ou 1 (emergencia).");
+    // A fila (FilaAtendimento.cpp) usa prioridades 1, 2 e 3.
+    if (p < 1 || p > 3) { 
+        throw std::invalid_argument("Prioridade invalida. Use 1 (Emergência), 2 (Urgência média) ou 3 (Estável).");
     }
     this->prioridade = p;
 }
@@ -28,6 +30,14 @@ void Paciente::setHistorico(std::string historico) {
 
 std::string Paciente::getHistorico() const {
     return this->historicoMedico;
+}
+
+void Paciente::setOrdemChegada(long long ordem) {
+    this->ordemChegada = ordem;
+}
+
+long long Paciente::getOrdemChegada() const {
+    return this->ordemChegada;
 }
 
 std::string Paciente::toJSONString() const {

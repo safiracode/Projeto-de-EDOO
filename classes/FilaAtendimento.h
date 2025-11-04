@@ -14,9 +14,19 @@ private:
         ComparadorPaciente
     > fila;
 
+    // Contador para garantir a ordem de chegada (FIFO)
+    // Cada paciente que entrar receberá um número único e crescente.
+    long long proximaOrdem;
+
 public:
+    // Construtor para inicializar nosso contador
+    FilaAtendimento() : proximaOrdem(0) {}
 
     void adicionarPaciente(Paciente* p) {
+        // Antes de adicionar, carimbamos o paciente com a "senha" (ordem) atual
+        p->setOrdemChegada(proximaOrdem);
+        proximaOrdem++; // E incrementamos a senha para o próximo
+
         fila.push(p);
     }
     bool estaVazia() const {

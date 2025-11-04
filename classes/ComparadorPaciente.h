@@ -1,17 +1,20 @@
 #pragma once
 #include "Paciente.h"
 
-/*
- * Este struct "ensina" a fila de prioridade como comparar dois Paciente*
- * * A std::priority_queue é uma "max heap" (fila de máximo) por padrão.
- * Isso significa que o item "maior" fica no topo (maior prioridade).
- * * Queremos que a Emergência (prioridade 1) venha antes do Normal (prioridade 0).
- * 1 > 0, então a lógica padrão de "max heap" funciona.
- * * Este operador retorna 'true' se 'a' tiver uma prioridade MENOR que 'b',
- * fazendo com que 'a' vá para o "fundo" da fila.
- */
+// Define como comparar dois pacientes na fila
 struct ComparadorPaciente {
     bool operator()(const Paciente* a, const Paciente* b) const {
-        return a->getPrioridade() < b->getPrioridade();
+        
+        // 1. Critério Primário: Prioridade (1-Emergência, 2-Média, 3-Estável)
+        //    Quem tem o número de prioridade MENOR (ex: 1) é atendido primeiro.
+        if (a->getPrioridade() != b->getPrioridade()) {
+            return a->getPrioridade() > b->getPrioridade();
+        }
+
+        // 2. Critério de Desempate
+        //    Se as prioridades são IGUAIS, olhamos a ordem de chegada.
+        //    Quem tem o número de ordem (senha) MENOR (chegou antes) 
+        //    é atendido primeiro.
+        return a->getOrdemChegada() > b->getOrdemChegada();
     }
 };

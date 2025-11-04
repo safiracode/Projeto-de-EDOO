@@ -1,43 +1,41 @@
 // FilaAtendimento.cpp
+#include "FilaAtendimento.h"
 
-// Inclui o cabeçalho da própria classe. Ele já traz todas as dependências (queue, vector, Paciente.h, etc.)
-#include "FilaAtendimento.h" 
-
-
+// Pega o próximo paciente da fila (o mais urgente)
 Paciente* FilaAtendimento::chamarProximo() {
     if (fila.empty()) {
-        return nullptr; // Retorna nulo se a fila estiver vazia
+        return nullptr; // Se estiver vazia, ninguém pra chamar
     }
-    
+
     Paciente* proximo = fila.top(); // Pega o de maior prioridade
     fila.pop();                     // Remove da fila
     return proximo;
 }
 
+// Mostra como está a fila no momento
 void FilaAtendimento::visualizarFila() const {
-    // 1. Cria uma cópia da fila original.
-    // O 'auto' garante que a cópia terá o tipo completo da fila de prioridade.
-    auto filaCopia = fila; 
+    auto filaCopia = fila; // Cópia só pra visualizar sem bagunçar a original
 
-    std::cout << "--- Fila de Atendimento Atual (" << filaCopia.size() << " pacientes) ---" << std::endl;
+    std::cout << "--- Fila de Atendimento (" << filaCopia.size() << " pacientes) ---" << std::endl;
     
     if (filaCopia.empty()) {
-        std::cout << "[Fila Vazia]" << std::endl;
+        std::cout << "[Fila vazia]" << std::endl;
         return;
     }
 
-    // 2. Itera sobre a CÓPIA, removendo e imprimindo cada elemento.
-    int posicao = 1;
+    int pos = 1;
     while (!filaCopia.empty()) {
         Paciente* p = filaCopia.top();
-        filaCopia.pop(); 
+        filaCopia.pop();
 
-        // Imprime as informações
-        std::cout << posicao << ". "
-                  << "Nome: " << p->getNome()
-                  << " (Prioridade: " << p->getPrioridade() << ")" 
-                  << std::endl;
-        
-        posicao++;
+        // Mostra nome e prioridade com a cor simbólica da triagem
+        std::string cor;
+        if (p->getPrioridade() == 1) cor = "🔴 Emergência";
+        else if (p->getPrioridade() == 2) cor = "🟡 Urgência média";
+        else cor = "🟢 Estável";
+
+        std::cout << pos << ". " << p->getNome() 
+                  << " - " << cor << std::endl;
+        pos++;
     }
 }
