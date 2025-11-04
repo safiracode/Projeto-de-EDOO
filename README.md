@@ -1,17 +1,35 @@
 # 🏥 Sistema Hospitalar em C++
 
 ## 📘 Descrição do Projeto
-Este projeto implementa um **sistema hospitalar orientado a objetos em C++**, desenvolvido com o objetivo de simular o fluxo básico de um hospital: desde o **cadastro de pacientes e médicos**, passando pelo **agendamento de consultas** até o **registro do histórico de atendimentos**.
+Esse projeto implementa um **Sistema Hospitalar orientado a objetos em C++** e foi desenvolvido como parte da disciplina de Estruturas de Dados Orientadas a Objetos (EDOO), com o propósito de aplicar os conhecimentos adquiridos ao longo do semestre em um projeto prático e colaborativo.
+O projeto foi desenvolvido com o objetivo de simular o fluxo interno de um hospital: desde o **cadastro de pacientes e médicos**, passando pelo **agendamento de consultas**, até o **registro do histórico de atendimentos**.
+Durante o desenvolvimento do sistema, o grupo buscou criar um código com uma arquitetura clara, de forma a possibilitar observar conceitos reais da área da saúde através da lógica de programação. Além disso, o sistema mostra como a POO pode ser utilizada para estruturar aplicações que combinam organização, flexibilidade e clareza.
 
-O sistema foi construído aplicando os principais conceitos da **Programação Orientada a Objetos (POO)**:
+## Conceitos da disciplina aplicados 💡
+Durante o desenvolvimento do **Sistema Hospitalar**, colocamos em prática diversos conceitos fundamentais da disciplina, aplicando-os diretamente na arquitetura do projeto, como:
+- Os comandos condicionais (if, else if, else) foram essenciais para controlar o fluxo das operações e definir comportamentos distintos para cada tipo de usuário ou ação do sistema.
+- Os laços de repetição (for, while) foram amplamente usados para percorrer listas de pacientes, médicos e consultas, além de exibir informações e processar dados de forma dinâmica.
+- A modularização foi aplicada ao dividir o projeto em múltiplos arquivos (.h e .cpp), separando a declaração das classes de suas implementações, o que favoreceu a organização e manutenção do código.
+
+Além disso, o sistema foi construído aplicando os principais conceitos da **Programação Orientada a Objetos (POO)**. Cada entidade principal do sistema (como `Pessoa`, `Paciente`, `Medico`, `Consulta` e `Hospital`) foi modelada como uma classe, com atributos e métodos que reproduzem comportamentos reais, aplicando encapsulamento, herança, polimorfismo e composição:
 - **Encapsulamento**: controle de acesso aos atributos das classes;
 - **Herança**: especialização de classes, como `Paciente` e `Medico` herdando de `Pessoa`;
 - **Polimorfismo**: redefinição de métodos e comportamentos;
 - **Composição e agregação**: relacionamento entre classes (`Hospital`, `Consulta`, `FilaAtendimento`, etc).
 
-Além disso, o projeto utiliza a biblioteca **nlohmann/json** para realizar a **persistência de dados em formato JSON**, permitindo salvar e recuperar informações do sistema sem necessidade de um banco de dados real.
+Por fim, o projeto utiliza a biblioteca **nlohmann/json** para realizar a **persistência de dados em formato JSON**, permitindo salvar e recuperar informações do sistema sem necessidade de um banco de dados real.
 
+
+## Ferramentas, frameworks e bibliotecas utilizados 🛠️ 
+Para o desenvolvimento do _Sistema Hospitalar_, utilizamos um conjunto de ferramentas e tecnologias, que tornaram possível criar um projeto tecnicamente funcional. Esses recursos foram:
+- **C++* — Linguagem principal do projeto, utilizada para a implementação da lógica, organização das classes e integração de todas as partes do sistema.
+- **nlohmann/json** — Biblioteca usada para realizar a persistência de dados em formato JSON, permitindo salvar e recuperar informações sem um banco de dados real.
+- **Visual Studio Code** — Editor de código adotado pela equipe, com extensões para depuração e integração com o GitHub.
+- **Makefile** — Usado para automatizar o processo de compilação e limpeza dos arquivos gerados.
+- **GitHub** — Usado para o controle de versão, acompanhamento das alterações e colaboração remota de forma organizada.  
+- **Discord e WhatsApp** — Aplicativos de comunicação, utilizados para o alinhamento de equipe, com mensagens e reuniões por chamada de vídeo..
 ---
+
 ## Membros da Equipe 👥 
 <table> 
   <tr> 
