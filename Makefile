@@ -1,3 +1,7 @@
+# No terminal, use:
+# PowerShell (Windows): mingw32-make
+# Bash (Linux/Mac): make
+
 # Diretórios
 SRC_DIR = src
 INC_DIR = classes
