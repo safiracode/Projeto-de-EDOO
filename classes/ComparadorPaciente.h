@@ -12,7 +12,6 @@
  */
 struct ComparadorPaciente {
     bool operator()(const Paciente* a, const Paciente* b) const {
-        // Compara usando o método que Eduardo vai fzr
         return a->getPrioridade() < b->getPrioridade();
     }
 };
