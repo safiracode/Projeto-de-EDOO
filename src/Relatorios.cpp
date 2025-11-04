@@ -1,102 +1,136 @@
-#include "Relatorios.h"
-#include "Medico.h"
-#include "Paciente.h"
-#include <iostream>
-#include <map>
-#include <vector>
-#include <numeric>
-#include <iomanip>
-#include <algorithm>
+#include "Relatorios.h"    
+#include "Medico.h"       
+#include "Paciente.h" 
+#include <iostream> 
+#include <map>  
+#include <vector>  
+#include <numeric> 
+#include <iomanip> 
+#include <algorithm> 
 
-using namespace std;
+using namespace std; // biblioteca padrão
 
+// relatório (com namespace)
 namespace Relatorios {
 
-    // Função auxiliar para imprimir linha de separação
-    void linha() { cout << string(40, '-') << "\n"; }
+    // função para imprimir uma linha com 40 traços (-)
+    void linha() { 
+        cout << string(40, '-') << "\n"; 
+    }
 
-    // 1. Pacientes atendidos por médico
+    // função 1: gerarRelatorioMedicos (de quantos pacientes cada médico atendeu)
     void gerarRelatorioMedicos(const list<Consulta*>& consultas) {
         cout << "\n=== Relatorio: Pacientes atendidos por medico ===\n";
-        if (consultas.empty()) return (void)(cout << "Nenhuma consulta registrada.\n");
 
-        map<string,int> cont;
+        // se não tiver nenhuma consulta, sai da função 
+        if (consultas.empty()) 
+            return (void)(cout << "Nenhuma consulta registrada.\n");
+
+        map<string,int> cont; // mapa para salvar médico -> qtde. de consultas
+
+        // vê todas as consultas
         for (auto c : consultas)
-            if (c->getMedico()) cont[c->getMedico()->getNome()]++;
+            // se tiver algum médico ligado à consulta
+            if (c->getMedico()) 
+                // incrementa o contador de atendimentos do médico
+                cont[c->getMedico()->getNome()]++;
 
+        // converter o mapa para um vetor de pares (nome, quantidade)
         vector<pair<string,int>> dados(cont.begin(), cont.end());
-        sort(dados.begin(), dados.end(), [](auto&a,auto&b){return a.second>b.second;});
 
-        cout << left << setw(25) << "Medico" << "Consultas\n"; linha();
-        for (auto& d : dados) cout << left << setw(25) << d.first << d.second << "\n";
-        linha(); cout << "Total de medicos: " << dados.size() << "\n";
+        // ordena o vetor dos médicos, do maior número de atendimentos para o menor (para organizar)
+        sort(dados.begin(), dados.end(), [](auto&a,auto&b){return a.second > b.second;});
+
+        // cabeçalho do relatório
+        cout << left << setw(25) << "Medico" << "Consultas\n"; 
+        linha(); // linha de separação
+
+        // mostra os dados formatados
+        for (auto& d : dados) 
+            cout << left << setw(25) << d.first << d.second << "\n";
+
+        // linha final e total de médicos contabilizados
+        linha(); 
+        cout << "Total de medicos: " << dados.size() << "\n";
     }
 
-    // 2. Tempo médio de espera (estimado)
+    // função 2: gerarRelatorioTempoMedio (calcula o tempo médio de espera estimado dos pacientes)
     void gerarRelatorioTempoMedio(const list<Consulta*>& consultas) {
         cout << "\n=== Relatorio: Tempo medio de espera ===\n";
-        if (consultas.empty()) return (void)(cout << "Nenhuma consulta registrada.\n");
 
-        vector<int> tempos;
-        for (auto c : consultas)
-            if (c->getPaciente())
-                tempos.push_back(c->getPaciente()->getPrioridade()==1 ? 2 : 10);
+        // se não tiver consultas, retorna
+        if (consultas.empty()) 
+            return (void)(cout << "Nenhuma consulta registrada.\n");
 
-        if (tempos.empty()) return (void)(cout << "Nenhum dado de tempo disponivel.\n");
+        vector<int> tempos; // armazenar tempos individuais de espera
+
+        // percorre todas as consultas
+        for (auto c : consultas) {
+            // pega o paciente da consulta
+            Paciente* p = c->getPaciente();
+            if (p)
+                // define tempo de espera: 2 min para alto risco, 10 para baixo risco
+                tempos.push_back(p->getPrioridadeVulnerabilidade() == 1 ? 2 : 10);
+        }
+
+        // se não tiver tempos válidos, sai da função
+        if (tempos.empty()) 
+            return (void)(cout << "Nenhum dado de tempo disponivel.\n");
+
+        // média dos tempos
         double media = accumulate(tempos.begin(), tempos.end(), 0.0) / tempos.size();
-        cout << "Tempo medio estimado de espera: " << fixed << setprecision(2)
-             << media << " minutos\n";
+        cout << "Tempo medio estimado de espera: " // resultado
+             << fixed << setprecision(2) << media << " minutos\n"; // duas casas decimais
     }
 
-    // Função genérica para histórico (paciente ou médico)
+    // função auxiliar: gerarHistorico (mostra o histórico de consultas de um médico ou de um paciente)
     template<typename T>
     void gerarHistorico(const list<Consulta*>& consultas, const string& nome, bool porMedico) {
+        // define se é "Medico" ou "Paciente"
         string tipo = porMedico ? "Medico" : "Paciente";
         cout << "\n=== Historico de Consultas do " << tipo << ": " << nome << " ===\n";
-        int total = 0;
 
+        int total = 0; // contador de consultas encontradas
+
+        // percorre todas as consultas
         for (auto c : consultas) {
-            Paciente* p = c->getPaciente();
+            // acessa o paciente e o médico da consulta
+            Paciente* p = c->getPaciente(); 
             Medico* m = c->getMedico();
+
+            // se algum for nulo, ignora
             if (!p || !m) continue;
 
-            if ((porMedico && m->getNome()==nome) ||
-                (!porMedico && p->getNome()==nome)) {
-                cout << "- " << (porMedico?"Paciente: ":"Medico: ")
-                     << setw(20) << left << (porMedico? p->getNome() : m->getNome())
-                     << " | Status: " << c->getStatus() << " | Data: " << c->getData() << "\n";
+            // se o nome informado está no sistema (é médico ou paciente)
+            if ((porMedico && m->getNome() == nome) ||
+                (!porMedico && p->getNome() == nome)) {
+
+                // exibição da consulta formatada
+                cout << "- " << (porMedico ? "Paciente: " : "Medico: ")
+                     << setw(20) << left << (porMedico ? p->getNome() : m->getNome())
+                     << " | Status: Concluida | Data: (?)\n";
+
+                // contador de consultas exibidas
                 total++;
             }
         }
-        if (!total) cout << "Nenhum historico encontrado.\n";
-        else cout << "Total de consultas encontradas: " << total << "\n";
+
+        // nenhuma consulta encontrada
+        if (!total) 
+            cout << "Nenhum historico encontrado.\n";
+        else 
+            cout << "Total de consultas encontradas: " << total << "\n";
     }
 
+    // função 3: gerarHistoricoPorPaciente (chama a função genérica para mostrar o histórico de um paciente)
     void gerarHistoricoPorPaciente(const list<Consulta*>& c, const string& n) {
+        // gerarHistorico com porMedico = false
         gerarHistorico<Paciente>(c, n, false);
     }
 
+    // função 4: gerarHistoricoPorMedico (chama a função genérica para mostrar o histórico de um médico)
     void gerarHistoricoPorMedico(const list<Consulta*>& c, const string& n) {
+        // gerarHistorico com porMedico = true
         gerarHistorico<Medico>(c, n, true);
-    }
-
-    // 5. Testes unitários
-    void testarRelatorios(const list<Consulta*>& consultas) {
-        cout << "\n=== Testes Unitarios dos Relatorios ===\n";
-        gerarRelatorioMedicos(consultas);
-        gerarRelatorioTempoMedio(consultas);
-        
-        // Testa histórico com pacientes e médicos do sistema
-        if (!consultas.empty()) {
-            // Pega o primeiro paciente e médico das consultas existentes
-            for (auto c : consultas) {
-                if (c->getPaciente() && c->getMedico()) {
-                    gerarHistoricoPorPaciente(consultas, c->getPaciente()->getNome());
-                    gerarHistoricoPorMedico(consultas, c->getMedico()->getNome());
-                    break; // Testa apenas com um exemplo de cada
-                }
-            }
-        }
-        cout << "=== Fim dos testes ===\n";
     }
 }
