@@ -1,5 +1,5 @@
 # No terminal, use:
-# PowerShell (Windows): mingw32-make
+# PowerShell (Windows): mingw32-make ou mingw32-make rebuild (para recompilar do zero)
 # Bash (Linux/Mac): make
 
 # Diretórios
