@@ -135,11 +135,8 @@ Além disso, o projeto utiliza a biblioteca **nlohmann/json** para realizar a **
 5. Para executar:
    ```bash
    ./bin/hospital
+   
+---
 
-### 📄 **Licença | Autoria**
-Este projeto é de uso acadêmico e livre para fins educacionais. Foi desenvolvido por:
-- **Ana Laura Barboza**: https://github.com/analauraboliveira
-- **Caio Cesar Nascimento**: https://github.com/CaioVBoas
-- **Eduardo Alves**: https://github.com/Edo-Alve5
-- **Letícia Staudinger**: https://github.com/lestrb 
-- **Safira Moraes**: https://github.com/safiracode 
+### 📄 **Licença**
+Este projeto é de uso acadêmico e livre para fins educacionais.
