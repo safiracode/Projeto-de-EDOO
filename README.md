@@ -48,6 +48,16 @@ Além disso, o projeto utiliza a biblioteca **nlohmann/json** para realizar a **
   </tr> 
 </table> 
 
+## Divisão de tarefas do projeto 👨‍💻
+
+| Time                                                  | Tarefas                                                                                |
+| ----------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| [Ana Laura Barboza Oliveira dos Santos]                | classe Relatorio; testes; Read Me do GitHub |
+| [Caio César Nascimento Vilas Boas]                  |  main; persistência de dados JSON |
+| [Eduardo Pinto Alves]                               | classes Pessoa, Paciente e Medico; Makefile |
+| [Letícia Staudinger Ribeiro]              | classe Hospital; relatório (entrega); testes e correções; GitHub Page |
+| [Safira Moraes Gomes]               | classes Consulta e FilaAtendimento; vídeo para o Youtube |
+
 ---
 
 ## 🧱 Estrutura de Pastas
