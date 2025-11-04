@@ -1,0 +1,24 @@
+# Compilação
+/bin/
+/build/
+/*.exe
+*.o
+*.obj
+*.out
+
+# Arquivos de dados locais
+*.json
+
+# Configurações de IDE
+.vscode/
+.idea/
+
+# Arquivos temporários e do sistema
+*.log
+*.tmp
+*.cache
+.DS_Store
+Thumbs.db
+
+# Makefile intermediários
+*.d
