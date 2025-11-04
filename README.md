@@ -2,7 +2,9 @@
 
 ## 📘 Descrição do Projeto
 Esse projeto implementa um **Sistema Hospitalar orientado a objetos em C++** e foi desenvolvido como parte da disciplina de Estruturas de Dados Orientadas a Objetos (EDOO), com o propósito de aplicar os conhecimentos adquiridos ao longo do semestre em um projeto prático e colaborativo.
+
 O projeto foi desenvolvido com o objetivo de simular o fluxo interno de um hospital: desde o **cadastro de pacientes e médicos**, passando pelo **agendamento de consultas**, até o **registro do histórico de atendimentos**.
+
 Durante o desenvolvimento do sistema, o grupo buscou criar um código com uma arquitetura clara, de forma a possibilitar observar conceitos reais da área da saúde através da lógica de programação. Além disso, o sistema mostra como a POO pode ser utilizada para estruturar aplicações que combinam organização, flexibilidade e clareza.
 
 ---
@@ -57,9 +59,9 @@ Durante o desenvolvimento do sistema, o grupo buscou criar um código com uma ar
 
 ## Conceitos da disciplina aplicados 💡
 Durante o desenvolvimento do **Sistema Hospitalar**, colocamos em prática diversos conceitos fundamentais da disciplina, aplicando-os diretamente na arquitetura do projeto, como:
-- Os comandos condicionais (`if`, `else if`, `else`) foram essenciais para controlar o fluxo das operações e definir comportamentos distintos para cada tipo de usuário ou ação do sistema.
-- Os laços de repetição (`for`, `while`) foram amplamente usados para percorrer listas de pacientes, médicos e consultas, além de exibir informações e processar dados de forma dinâmica.
-- A modularização foi aplicada ao dividir o projeto em múltiplos arquivos (`.h` e `.cpp`), separando a declaração das classes de suas implementações, o que favoreceu a organização e manutenção do código.
+- Os _comandos condicionais_ (`if`, `else if`, `else`) foram essenciais para controlar o fluxo das operações e definir comportamentos distintos para cada tipo de usuário ou ação do sistema.
+- Os _laços de repetição_ (`for`, `while`) foram amplamente usados para percorrer listas de pacientes, médicos e consultas, além de exibir informações e processar dados de forma dinâmica.
+- A _modularização_ foi aplicada ao dividir o projeto em múltiplos arquivos (`.h` e `.cpp`), separando a declaração das classes de suas implementações, o que favoreceu a organização e manutenção do código.
 
 Além disso, o sistema foi construído aplicando os principais conceitos da **Programação Orientada a Objetos (POO)**. Cada entidade principal do sistema (como `Pessoa`, `Paciente`, `Medico`, `Consulta` e `Hospital`) foi modelada como uma classe, com atributos e métodos que reproduzem comportamentos reais, aplicando encapsulamento, herança, polimorfismo e composição:
 - **Encapsulamento**: controle de acesso aos atributos das classes;
