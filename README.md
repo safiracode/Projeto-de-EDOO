@@ -97,6 +97,14 @@ Para o desenvolvimento do _Sistema Hospitalar_, utilizamos um conjunto de ferram
 │   ├── Pessoa.h
 │   └── Relatorios.h
 │
+├── docs/
+│   ├── Relatório EDOO.pdf
+│   ├── index.html
+│   ├── style.css
+│   └── imagens/
+│       └── cadastro_paciente.png
+│       └── menu.png
+│
 ├── include/
 │   └── nlohmann/
 │       └── json.hpp
@@ -105,13 +113,18 @@ Para o desenvolvimento do _Sistema Hospitalar_, utilizamos um conjunto de ferram
 │   ├── Consulta.cpp
 │   ├── FilaAtendimento.cpp
 │   ├── Hospital.cpp
-│   ├── main.cpp
 │   ├── Medico.cpp
 │   ├── Paciente.cpp
 │   ├── Pessoa.cpp
-│   └── Relatorios.cpp
+│   ├── Relatorios.cpp
+│   └── main.cpp
 │
-└── Makefile
+├── .gitignore
+│
+├── Makefile
+│
+└── README.md
+
 ```
 
 ---
