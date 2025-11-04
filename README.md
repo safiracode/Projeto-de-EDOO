@@ -12,6 +12,43 @@ O sistema foi construído aplicando os principais conceitos da **Programação O
 Além disso, o projeto utiliza a biblioteca **nlohmann/json** para realizar a **persistência de dados em formato JSON**, permitindo salvar e recuperar informações do sistema sem necessidade de um banco de dados real.
 
 ---
+## Membros da Equipe 👥 
+<table> 
+  <tr> 
+    <td align="center"> 
+      <a href="https://github.com/analauraboliveira"> 
+        <img src="https://avatars.githubusercontent.com/u/207280291?v=4" width="115"><br> 
+        <sub><b>Ana Laura Barboza</b></sub><br> <sub>(<code>analauraboliveira</code>)</sub> 
+      </a> 
+    </td> 
+    <td align="center"> 
+      <a href="https://github.com/CaioVBoas"> 
+        <img src="https://avatars.githubusercontent.com/u/129686802?v=4" width="115"><br> 
+        <sub><b>Caio Cesar Nascimento</b></sub><br> <sub>(<code>CaioVBoas</code>)</sub> 
+      </a> 
+    </td> 
+    <td align="center"> 
+      <a href="https://github.com/Edo-Alve5"> 
+        <img src="https://avatars.githubusercontent.com/u/174794609?v=4" width="115"><br> 
+        <sub><b>Eduardo Alves</b></sub><br> <sub>(<code>Edo-Alve5</code>)</sub> 
+      </a> 
+    </td> 
+    <td align="center"> 
+      <a href="https://github.com/lestrb"> 
+        <img src="https://avatars.githubusercontent.com/u/193823503?v=4" width="115"><br> 
+        <sub><b>Letícia Staudinger</b></sub><br> <sub>(<code>lestrb</code>)</sub> 
+      </a> 
+    </td> 
+    <td align="center"> 
+      <a href="https://github.com/safiracode"> 
+        <img src="https://avatars.githubusercontent.com/u/206463303?v=4" width="115"><br> 
+        <sub><b>Safira Moraes</b></sub><br> <sub>(<code>safiracode</code>)</sub> 
+      </a> 
+    </td> 
+  </tr> 
+</table> 
+
+---
 
 ## 🧱 Estrutura de Pastas
 ```
