@@ -29,6 +29,12 @@
     }
     footer { text-align: center; padding: 2rem; background: #e9ecef; color: #555; max-height: 100px; }
 
+    /* Ajuste de textos */
+    p, li {
+      text-align: justify;      /* Alinha o texto nas duas margens */
+      text-justify: inter-word; /* Distribui o espaçamento entre palavras */
+    }
+
     /* Ajuste das fotos */
     .gallery {
     display: flex;
@@ -52,24 +58,48 @@
 
 <header>
   <h1>Sistema Hospitalar em C++</h1>
-  <p>Um sistema orientado a objetos para gerenciamento de pacientes, médicos e consultas.</p>
+  <p style="text-align: center;">Um sistema orientado a objetos para gerenciamento de pacientes, médicos e consultas.</p>
 </header>
 
 <main>
   <section>
     <h2>Sobre o Projeto</h2>
-    <p>Este projeto implementa um sistema hospitalar desenvolvido em C++ utilizando Programação Orientada a Objetos (POO). 
-    Ele permite o cadastro de pacientes e médicos, agendamento de consultas, geração de relatórios sobre pacientes e/ou médicos e armazenamento dos dados em arquivos JSON, garantindo persistência entre execuções.</p>
+    <p>Este projeto implementa um sistema hospitalar desenvolvido em C++, aplicando os princípios da Programação Orientada a Objetos (POO). 
+      O sistema realiza cadastro de pacientes e médicos, agendamento de consultas, geração de relatórios e gerenciamento automatizado da fila de atendimento, 
+      com armazenamento persistente em arquivos JSON, garantindo que os dados sejam mantidos entre execuções.</p>
+    <p>O código foi desenvolvido de forma modular, utilizando classes interligadas como Pessoa, Paciente, Medico, Consulta, FilaAtendimento e Hospital. 
+      Cada classe encapsula suas responsabilidades e colabora por meio de composição e associação de ponteiros, o que proporciona flexibilidade e controle 
+      manual de memória por meio de construtores e destrutores personalizados.</p>
+    <p>O projeto foi desenvolvido utilizando recursos da Standard Template Library (STL), como list, vector, priority_queue e string, para manipulação 
+      eficiente de dados. A persistência das informações é feita por meio de arquivos JSON, utilizando a biblioteca nlohmann/json, que permite a 
+      serialização e desserialização dos objetos de forma simples e estruturada. O código segue o padrão de organização include/src, separando as 
+      declarações em arquivos .h e as implementações em .cpp. Além disso, o projeto é compatível com diferentes compiladores que suportem C++17, 
+      como GCC, Clang, MSVC e MinGW-w64.</p>
   </section>
 
   <section>
     <h2>Principais Funcionalidades</h2>
     <ul>
-      <li>Cadastro e listagem de pacientes e médicos</li>
-      <li>Agendamento e histórico de consultas</li>
-      <li>Relatórios de consultas por médico ou por paciente</li>
-      <li>Persistência de dados em JSON</li>
-      <li>Fila de atendimento automatizada</li>
+      <li>Cadastro e listagem de pacientes e médicos;</li>
+      <li>Agendamento, cancelamento e histórico de consultas;</li>
+      <li>Geração de relatórios personalizados (por médico, paciente ou tempo médio de espera);</li>
+      <li>Persistência de dados via JSON (usando a biblioteca nlohmann/json);</li>
+      <li>Fila de atendimento automatizada com base em prioridades médicas;</li>
+      <li>Leitura e gravação de dados através de streams (ifstream e ofstream).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Destaques Técnicos</h2>
+    <ul>
+      <li>Arquitetura modular: separação entre arquivos de cabeçalho (.h) e implementação (.cpp), favorecendo legibilidade e manutenção;</li>
+      <li>Gerenciamento de ponteiros e memória: cada entidade dinâmica (pacientes, médicos, consultas) é criada e destruída com segurança, evitando vazamentos de memória;</li>
+      <li>Geração de relatórios personalizados (por médico, paciente ou tempo médio de espera)</li>
+      <li>Polimorfismo e herança: Paciente e Medico herdam de Pessoa, compartilhando atributos e métodos comuns;</li>
+      <li>Fila de prioridade com comparador customizado: define a ordem de atendimento com base em triagem, vulnerabilidade e ordem de chegada;</li>
+      <li>Serialização e desserialização JSON: objetos são convertidos para e a partir de JSON para armazenamento persistente;</li>
+      <li>Namespace de relatórios: módulo independente responsável por geração e exibição de estatísticas e históricos;</li>
+      <li>Interface de console intuitiva: menus interativos que chamam diretamente os métodos da classe Hospital.</li>
     </ul>
   </section>
 
@@ -116,7 +146,7 @@
     <h2>Desenvolvedores</h2>
     <p>
       🔸 <a href="https://github.com/analauraboliveira" target="_blank">Ana Laura Barboza</a><br>
-      🔸 <a href="https://github.com/CaioVBoas" target="_blank">Caio César Nascimento</a><br>
+      🔸 <a href="https://github.com/CaioVBoas" target="_blank">Caio Cesar Nascimento</a><br>
       🔸 <a href="https://github.com/Edo-Alve5" target="_blank">Eduardo Alves</a><br>
       🔸 <a href="https://github.com/lestrb" target="_blank">Letícia Staudinger</a><br>
       🔸 <a href="https://github.com/safiracode" target="_blank">Safira Moraes</a><br>
@@ -126,7 +156,7 @@
 </main>
 
 <footer>
-  <p>Desenvolvido para uso acadêmico e livre para fins educacionais.</p>
+  <p style="text-align: center;">Desenvolvido para uso acadêmico e livre para fins educacionais.</p>
 </footer>
 
 </body>
