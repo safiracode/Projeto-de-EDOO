@@ -4,9 +4,9 @@
 Este projeto implementa um **sistema hospitalar orientado a objetos em C++**, desenvolvido com o objetivo de simular o fluxo básico de um hospital: desde o **cadastro de pacientes e médicos**, passando pelo **agendamento de consultas** até o **registro do histórico de atendimentos**.
 
 O sistema foi construído aplicando os principais conceitos da **Programação Orientada a Objetos (POO)**:
-- **Encapsulamento**: controle de acesso aos atributos das classes.
-- **Herança**: especialização de classes, como `Paciente` e `Medico` herdando de `Pessoa`.
-- **Polimorfismo**: redefinição de métodos e comportamentos.
+- **Encapsulamento**: controle de acesso aos atributos das classes;
+- **Herança**: especialização de classes, como `Paciente` e `Medico` herdando de `Pessoa`;
+- **Polimorfismo**: redefinição de métodos e comportamentos;
 - **Composição e agregação**: relacionamento entre classes (`Hospital`, `Consulta`, `FilaAtendimento`, etc).
 
 Além disso, o projeto utiliza a biblioteca **nlohmann/json** para realizar a **persistência de dados em formato JSON**, permitindo salvar e recuperar informações do sistema sem necessidade de um banco de dados real.
@@ -91,8 +91,8 @@ Além disso, o projeto utiliza a biblioteca **nlohmann/json** para realizar a **
 
 ### 📄 **Licença | Autoria**
 Este projeto é de uso acadêmico e livre para fins educacionais. Foi desenvolvido por:
-- **Ana Laura Barboza**
-- **Caio Cesar Nascimento**
-- **Eduardo Alves**
-- **Letícia Staudinger**
-- **Safira Moraes**
+- **Ana Laura Barboza**: https://github.com/analauraboliveira
+- **Caio Cesar Nascimento**: https://github.com/CaioVBoas
+- **Eduardo Alves**: https://github.com/Edo-Alve5
+- **Letícia Staudinger**: https://github.com/lestrb 
+- **Safira Moraes**: https://github.com/safiracode 
