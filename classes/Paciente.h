@@ -1,5 +1,5 @@
 #pragma once
-#include "Pessoa.h" // Inclui a classe base
+#include "Pessoa.h" 
 #include <string>
 
 /*
@@ -8,11 +8,11 @@
  */
 class Paciente : public Pessoa {
 private:
-    int prioridade;
+    // Esta é a prioridade ESTRUTURAL (Nível 1 ou 2).
+    // (1 = Crianças/Idosos/Alto Risco, 2 = Baixo Risco)
+    int prioridadeVulnerabilidade;
+    
     std::string historicoMedico;
-
-    // Prioridade pra quem chega antes quem chegou antes.
-    long long ordemChegada;
 
 public:
     /*
@@ -20,40 +20,16 @@ public:
      * Repassa 'nome' e 'idade' para o construtor 'Pessoa'.
      * O 'historico' é opcional.
      */
-    Paciente(std::string nome, int idade, int prioridade, std::string historico = "");
+    Paciente(std::string nome, int idade, int prioridadeVulnerabilidade, std::string historico = "");
 
-    /*
-     * Setters: Validam e definem os atributos de Paciente.
-     * 'setPrioridade' rejeita valores != 0 e != 1.
-     */
-    void setPrioridade(int p);
+    // Métodos para a prioridade de vulnerabilidade (faixa etária)
+    void setPrioridadeVulnerabilidade(int p);
+    int getPrioridadeVulnerabilidade() const;
+
     void setHistorico(std::string historico);
-    
-    /*
-     * Getters: Fornecem acesso de leitura.
-     * 'getPrioridade' é crucial para a Fila de Atendimento
-     * (de Safira) funcionar corretamente.
-     */
-    int getPrioridade() const;
     std::string getHistorico() const;
 
-    // Métodos para controlar a ordem de chegada
-    void setOrdemChegada(long long ordem);
-    long long getOrdemChegada() const;
-
-
-    /*
-     * Serialização Polimórfica (Override):
-     * Substitui 'toJSONString' de 'Pessoa'.
-     * Irá chamar 'Pessoa::toJSONString()' e adicionar
-     * 'prioridade' e 'historicoMedico' ao JSON.
-     */
+    // Serialização JSON
     std::string toJSONString() const override;
-
-    /*
-     * Método de Fábrica Estático (Desserialização):
-     * Converte uma string JSON de volta em um novo objeto 'Paciente*'.
-     * Usado para carregar dados do disco.
-     */
     static Paciente* fromJSONString(const std::string& jsonStr);
 };

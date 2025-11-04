@@ -1,20 +1,31 @@
 #pragma once
-#include "Paciente.h"
+#include "Consulta.h" // Agora comparamos Consultas
+#include "Paciente.h" // Precisamos do Paciente para a prioridade 2
 
-// Define como comparar dois pacientes na fila
 struct ComparadorPaciente {
-    bool operator()(const Paciente* a, const Paciente* b) const {
+
+    bool operator()(const Consulta* a, const Consulta* b) const {
         
-        // 1. Critério Primário: Prioridade (1-Emergência, 2-Média, 3-Estável)
-        //    Quem tem o número de prioridade MENOR (ex: 1) é atendido primeiro.
-        if (a->getPrioridade() != b->getPrioridade()) {
-            return a->getPrioridade() > b->getPrioridade();
+        // NÍVEL 1: PRIORIDADE DA TRIAGEM (Emergência 1-3
+        // (1 = Emergência, 2 = Média, 3 = Estável)
+        // Quem tem o número MENOR (1) é atendido primeiro.
+        if (a->getPrioridadeTriagem() != b->getPrioridadeTriagem()) {
+            return a->getPrioridadeTriagem() > b->getPrioridadeTriagem();
         }
 
-        // 2. Critério de Desempate
-        //    Se as prioridades são IGUAIS, olhamos a ordem de chegada.
-        //    Quem tem o número de ordem (senha) MENOR (chegou antes) 
-        //    é atendido primeiro.
+        // NÍVEL 2: PRIORIDADE DE VULNERABILIDADE
+        // (1 = Alto Risco, 2 = Baixo Risco)
+        // Se a triagem for igual, quem é mais vulnerável (1) é atendido primeiro.
+        int prioVulnerabilidadeA = a->getPaciente()->getPrioridadeVulnerabilidade();
+        int prioVulnerabilidadeB = b->getPaciente()->getPrioridadeVulnerabilidade();
+
+        if (prioVulnerabilidadeA != prioVulnerabilidadeB) {
+            return prioVulnerabilidadeA > prioVulnerabilidadeB;
+        }
+
+        // NÍVEL 3: ORDEM DE CHEGADA
+        // Se a triagem E a vulnerabilidade são iguais, 
+        // quem chegou antes é atendido primeiro.
         return a->getOrdemChegada() > b->getOrdemChegada();
     }
 };

@@ -1,41 +1,53 @@
-// FilaAtendimento.cpp
 #include "FilaAtendimento.h"
+#include "Paciente.h" // Necessário para pegar o nome do paciente
 
-// Pega o próximo paciente da fila (o mais urgente)
-Paciente* FilaAtendimento::chamarProximo() {
+// Pega a próxima consulta da fila (a mais urgente)
+Consulta* FilaAtendimento::chamarProxima() {
     if (fila.empty()) {
         return nullptr; // Se estiver vazia, ninguém pra chamar
     }
 
-    Paciente* proximo = fila.top(); // Pega o de maior prioridade
+    Consulta* proxima = fila.top(); // Pega o de maior prioridade
     fila.pop();                     // Remove da fila
-    return proximo;
+    return proxima;
 }
 
 // Mostra como está a fila no momento
 void FilaAtendimento::visualizarFila() const {
     auto filaCopia = fila; // Cópia só pra visualizar sem bagunçar a original
 
-    std::cout << "--- Fila de Atendimento (" << filaCopia.size() << " pacientes) ---" << std::endl;
+    std::cout << "   Pacientes na fila: " << filaCopia.size() << std::endl;
     
     if (filaCopia.empty()) {
-        std::cout << "[Fila vazia]" << std::endl;
+        std::cout << "   [Fila vazia]" << std::endl;
         return;
     }
 
     int pos = 1;
     while (!filaCopia.empty()) {
-        Paciente* p = filaCopia.top();
+        Consulta* c = filaCopia.top();
         filaCopia.pop();
 
-        // Mostra nome e prioridade com a cor simbólica da triagem
-        std::string cor;
-        if (p->getPrioridade() == 1) cor = "🔴 Emergência";
-        else if (p->getPrioridade() == 2) cor = "🟡 Urgência média";
-        else cor = "🟢 Estável";
+        // Pegamos o paciente DE DENTRO da consulta
+        Paciente* p = c->getPaciente();
 
-        std::cout << pos << ". " << p->getNome() 
-                  << " - " << cor << std::endl;
+        // Definindo os textos de prioridade
+        
+        // Nível 1 (Triagem)
+        std::string txtTriagem;
+        if (c->getPrioridadeTriagem() == 1) txtTriagem = "🔴 Emergência";
+        else if (c->getPrioridadeTriagem() == 2) txtTriagem = "🟡 Urgência";
+        else txtTriagem = "🟢 Estável";
+
+        // Nível 2 (Vulnerabilidade)
+        std::string txtVulnerab;
+        if (p->getPrioridadeVulnerabilidade() == 1) txtVulnerab = "Alto Risco";
+        else txtVulnerab = "Baixo Risco";
+
+        // Imprime o paciente e seus dois níveis de prioridade
+        std::cout << "   " << pos << ". " << p->getNome() 
+                  << " (Triagem: " << txtTriagem 
+                  << " | Risco: " << txtVulnerab << ")" << std::endl;
         pos++;
     }
 }

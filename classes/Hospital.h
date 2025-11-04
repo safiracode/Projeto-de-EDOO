@@ -5,39 +5,42 @@
 #include "Medico.h"
 #include "Consulta.h"
 #include "FilaAtendimento.h"
+#include "Medico.h" 
 
 class Hospital {
 private:
-    // Listas de ponteiros que guardam os objetos instanciados de cada classe
     std::list<Paciente*> pacientes;
     std::list<Medico*> medicos;
-    std::list<Consulta*> consultas;
-    FilaAtendimento fila;      // Objeto que gerencia a fila 
+    std::list<Consulta*> consultas;    
 
-    int proximoIdConsulta = 1; // Inicializa contador interno de IDs de consultas 
+    int proximoIdConsulta = 1;
 
 public:
-    Hospital() = default;      // Construtor padrão
-    ~Hospital();               // Destrutor definido em Hospital.cpp
+    Hospital() = default;
+   ~Hospital();              
 
     // CADASTROS
-    void cadastrarPaciente(std::string nome, int idade, int prioridade, std::string historico = "");
-    void cadastrarMedico(std::string nome, int idade, std::string crm, std::string especialidade);
+    void cadastrarPaciente(std::string nome, int idade, int prioridadeVulnerabilidade, std::string historico = "");
+   void cadastrarMedico(std::string nome, int idade, std::string crm, std::string especialidade);
 
     // CONSULTAS / FILA
-    void agendarConsulta(std::string nomePaciente, std::string nomeMedico, std::string data);
-    void adicionarNaFila(std::string nomePaciente);
-    void atenderProximo();
+    void agendarEEnfileirar(std::string nomePaciente, std::string nomeMedico, std::string data, int prioridadeTriagem);
+    void atenderProximo(std::string nomeMedico);
+    
+    // Função para cancelar uma consulta
+    void cancelarConsulta(int consultaId);
 
     // BUSCAS
     Paciente* buscarPacientePorNome(const std::string& nome);
     Medico* buscarMedicoPorNome(const std::string& nome);
+    // Precisamos de uma forma de buscar consulta por ID
+    Consulta* buscarConsultaPorId(int id);
 
     // LISTAGENS
     void listarPacientes() const;
     void listarMedicos() const;
     void listarConsultas() const;
-    void listarFilaAtendimento() const;
+    void listarFilasDeAtendimento() const;
 
     // PERSISTÊNCIA (JSON)
     void salvarDados(const std::string& arquivo = "hospital_data.json");
@@ -47,6 +50,5 @@ public:
     int getTotalPacientes() const;
     int getTotalMedicos() const;
     int getTotalConsultas() const;
-    const std::list<Consulta*>& getConsultas() const { return consultas; }
+   const std::list<Consulta*>& getConsultas() const { return consultas; }
 };
-
