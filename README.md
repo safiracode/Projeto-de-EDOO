@@ -14,31 +14,37 @@ Além disso, o projeto utiliza a biblioteca **nlohmann/json** para realizar a **
 ---
 
 ## 🧱 Estrutura de Pastas
+```
 ├── .vscode/
-│ ├── settings.json
-│ └── tasks.json
+│   ├── settings.json
+│   └── tasks.json
+│
 ├── classes/
-│ ├── ComparadorPaciente.h
-│ ├── Consulta.h
-│ ├── FilaAtendimento.h
-│ ├── Hospital.h
-│ ├── Medico.h
-│ ├── Paciente.h
-│ ├── Pessoa.h
-│ └── Relatorios.h
+│   ├── ComparadorPaciente.h
+│   ├── Consulta.h
+│   ├── FilaAtendimento.h
+│   ├── Hospital.h
+│   ├── Medico.h
+│   ├── Paciente.h
+│   ├── Pessoa.h
+│   └── Relatorios.h
+│
 ├── include/
-│ └── nlohmann/
-│ └── json.hpp
+│   └── nlohmann/
+│       └── json.hpp
+│
 ├── src/
-│ ├── Consulta.cpp
-│ ├── FilaAtendimento.cpp
-│ ├── Hospital.cpp
-│ ├── main.cpp
-│ ├── Medico.cpp
-│ ├── Paciente.cpp
-│ ├── Pessoa.cpp
-│ └── Relatorios.cpp
+│   ├── Consulta.cpp
+│   ├── FilaAtendimento.cpp
+│   ├── Hospital.cpp
+│   ├── main.cpp
+│   ├── Medico.cpp
+│   ├── Paciente.cpp
+│   ├── Pessoa.cpp
+│   └── Relatorios.cpp
+│
 └── Makefile
+```
 
 ---
 
