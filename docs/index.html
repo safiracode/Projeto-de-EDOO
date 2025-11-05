@@ -66,8 +66,10 @@
   <section>
     <h2>Sobre o Projeto</h2>
     <p>Este projeto implementa um sistema hospitalar desenvolvido em C++, aplicando os princípios da Programação Orientada a Objetos (POO). 
-      O sistema realiza cadastro de pacientes e médicos, agendamento de consultas, geração de relatórios e gerenciamento automatizado da fila de atendimento, 
-      com armazenamento persistente em arquivos JSON, garantindo que os dados sejam mantidos entre execuções.</p>
+      O sistema realiza cadastro de pacientes e médicos, agendamento de consultas, geração de relatórios e gerenciamento automatizado da fila de atendimento.
+      São feitas operações completas de CRUD (Create, Read, Update, Delete) para pacientes, médicos e consultas, permitindo criar, listar, editar e remover registros de forma segura e intuitiva. 
+      Essas operações estão integradas à camada de persistência em JSON, garantindo que qualquer modificação feita no sistema seja refletida automaticamente 
+      nos arquivos de armazenamento, mantendo a consistência dos dados entre diferentes execuções.</p>
     <p>O código foi desenvolvido de forma modular, utilizando classes interligadas como Pessoa, Paciente, Medico, Consulta, FilaAtendimento e Hospital. 
       Cada classe encapsula suas responsabilidades e colabora por meio de composição e associação de ponteiros, o que proporciona flexibilidade e controle 
       manual de memória por meio de construtores e destrutores personalizados.</p>
@@ -86,7 +88,10 @@
       <li>Geração de relatórios personalizados (por médico, paciente ou tempo médio de espera);</li>
       <li>Persistência de dados via JSON (usando a biblioteca nlohmann/json);</li>
       <li>Fila de atendimento automatizada com base em prioridades médicas;</li>
-      <li>Leitura e gravação de dados através de streams (ifstream e ofstream).</li>
+      <li>Funções completas de CRUD (criação, leitura, atualização e remoção) para pacientes, médicos e consultas;</li>
+      <li>Verificação de dependências antes da exclusão de registros (impede apagar médicos/pacientes com consultas ativas);</li>
+      <li>Menus interativos e submenus específicos para cada entidade (Pacientes, Médicos, Consultas, Relatórios e Persistência);</li>
+      <li>Carregamento e salvamento automáticos dos dados JSON ao iniciar ou encerrar o programa.</li>
     </ul>
   </section>
 
@@ -95,7 +100,7 @@
     <ul>
       <li>Arquitetura modular: separação entre arquivos de cabeçalho (.h) e implementação (.cpp), favorecendo legibilidade e manutenção;</li>
       <li>Gerenciamento de ponteiros e memória: cada entidade dinâmica (pacientes, médicos, consultas) é criada e destruída com segurança, evitando vazamentos de memória;</li>
-      <li>Geração de relatórios personalizados (por médico, paciente ou tempo médio de espera)</li>
+      <li>Geração de relatórios personalizados (por médico, paciente ou tempo médio de espera);</li>
       <li>Polimorfismo e herança: Paciente e Medico herdam de Pessoa, compartilhando atributos e métodos comuns;</li>
       <li>Fila de prioridade com comparador customizado: define a ordem de atendimento com base em triagem, vulnerabilidade e ordem de chegada;</li>
       <li>Serialização e desserialização JSON: objetos são convertidos para e a partir de JSON para armazenamento persistente;</li>
@@ -103,6 +108,19 @@
       <li>Interface de console intuitiva: menus interativos que chamam diretamente os métodos da classe Hospital.</li>
     </ul>
   </section>
+
+  <section>
+  <h2>Operações CRUD</h2>
+  <p>O sistema implementa todas as operações de CRUD para gerenciamento de pacientes, médicos e consultas. 
+  Cada entidade pode ser criada, listada, atualizada ou removida de forma independente, com verificações automáticas 
+  para impedir exclusões incorretas de registros vinculados.</p>
+  <ul>
+    <li><strong>Pacientes:</strong> cadastro, listagem, edição e remoção com histórico médico associado;</li>
+    <li><strong>Médicos:</strong> gerenciamento completo de registros e vinculação a consultas;</li>
+    <li><strong>Consultas:</strong> agendamento, edição, cancelamento e exclusão, com integração à fila de atendimento;</li>
+    <li><strong>Persistência:</strong> dados salvos automaticamente em JSON ao encerrar o sistema.</li>
+  </ul>
+</section>
 
   <section>
   <h2>Demonstrações</h2>
