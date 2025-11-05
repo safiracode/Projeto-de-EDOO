@@ -9,6 +9,13 @@ Durante o desenvolvimento do sistema, o grupo buscou criar um código com uma ar
 
 ---
 
+## 📎Entregas
+- GitHub (Link deste Repositório): https://github.com/safiracode/Projeto-de-EDOO
+- GitHub Pages (Página do Projeto - contém Relatório): https://safiracode.github.io/Projeto-de-EDOO/
+- Vídeo de Demonstração (Youtube):
+
+---
+
 ## 👥 Membros da Equipe 
 <table> 
   <tr> 
