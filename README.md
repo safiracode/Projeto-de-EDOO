@@ -76,6 +76,13 @@ Além disso, o sistema foi construído aplicando os principais conceitos da **Pr
 - **Polimorfismo**: redefinição de métodos e comportamentos;
 - **Composição e agregação**: relacionamento entre classes (`Hospital`, `Consulta`, `FilaAtendimento`, etc).
 
+O sistema implementa operações completas de **CRUD (Create, Read, Update, Delete)** para gerenciar pacientes, médicos e consultas:
+- **Create (Cadastrar)**: Permite adicionar novos pacientes, médicos e consultas ao sistema;
+- **Read (Listar / Consultar)**: Permite visualizar informações de pacientes, médicos, consultas e filas de atendimento, incluindo relatórios por paciente, médico ou tempo médio de espera;
+- **Update (Editar)**: Permite atualizar dados existentes de pacientes, médicos e consultas, preservando histórico e vínculos importantes;
+- **Delete (Remover)**: Permite excluir pacientes, médicos e consultas, respeitando restrições de dependência (não é possível remover um paciente ou médico com consultas ativas);
+- **Persistência**: Todas as alterações são automaticamente salvas em arquivos JSON usando a biblioteca `nlohmann/json`, garantindo que os dados sejam mantidos entre diferentes execuções do programa.
+
 Por fim, o projeto utiliza a biblioteca **nlohmann/json** para realizar a **persistência de dados em formato JSON**, permitindo salvar e recuperar informações do sistema sem necessidade de um banco de dados real.
 
 ## 🛠️ Ferramentas, frameworks e bibliotecas utilizados 
