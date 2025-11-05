@@ -316,7 +316,7 @@ void submenuMedicos(Hospital& hospital) {
     int opcao;
     do {
         cout << "\n╔════════════════════════════════════════╗\n";
-        cout << "║       👨‍⚕️ GERENCIAR MÉDICOS             ║\n";
+        cout << "║       👨‍⚕️ GERENCIAR MÉDICOS            ║\n";
         cout << "╚════════════════════════════════════════╝\n";
         cout << "  1 - ➕ Cadastrar Médico\n";
         cout << "  2 - 📋 Listar Médicos\n";
